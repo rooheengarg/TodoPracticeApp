@@ -1,0 +1,12 @@
+.chip {
+  min-width: 100px;
+  padding: 8px;
+  border: 1px solod #eee;
+  text-align: center;
+}
+
+.item {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-evenly;
+}
