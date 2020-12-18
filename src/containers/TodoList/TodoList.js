@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import css from "./TodoList.module.css";
+import React, { useState, useRef } from "react";
 import TodoItem from "../../components/TodoItem/TodoItem";
 
 const TodoList = () => {
   const [items, addItem] = useState([]);
-  const [itemList, resetItemList] = useState(null);
   const inputEl = useRef(null);
 
   const onDelete = (index) => {
@@ -39,11 +37,6 @@ const TodoList = () => {
     });
   };
 
-  useEffect(() => {
-    let list = createItemList();
-    resetItemList(list);
-  }, [items]);
-
   const onItemSubmit = () => {
     if (inputEl.current.value.trim()) {
       const newItems = [
@@ -57,6 +50,7 @@ const TodoList = () => {
 
   return (
     <div>
+      {console.log("render time ")}
       <h1>It's a Todo list :D</h1>
       <input
         ref={inputEl}
@@ -65,7 +59,7 @@ const TodoList = () => {
         placeholder="Enter todo item"
       />
       <button onClick={onItemSubmit}>Submit</button>
-      {itemList && <div>{itemList}</div>}
+      {items && items.length > 0 && <div>{createItemList()}</div>}
     </div>
   );
 };
